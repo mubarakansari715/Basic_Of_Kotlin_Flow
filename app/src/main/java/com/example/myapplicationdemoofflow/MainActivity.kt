@@ -27,12 +27,23 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-fun producer(): Flow<Int> {
+fun producer(): Flow<Note> {
     return flow {
-        val list = arrayListOf<Int>(1, 2, 3, 4, 5)
+
+        val list = arrayListOf<Note>(
+            Note(true,"mubarak"),
+            Note(true,"ansari"),
+            Note(true,"happy"),
+        )
+
         list.forEach {
             emit(it)
             delay(1000)
         }
     }
 }
+
+data class Note(
+    val isActive: Boolean,
+    val title: String
+)
